@@ -1,5 +1,6 @@
 from tkinter import *
 import pyshorteners as ps
+from urllib.parse import urlparse
 import threading
 import os
 
@@ -15,7 +16,7 @@ class shortener:
         self.url = StringVar()
 
         Label(self.app,text="URL Shortener:",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=40)
-        self.ShrtStatus = Label(self.app,text="",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold'))
+        self.ShrtStatus = Label(self.app,bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold'))
         self.ShrtStatus.place(x=440,y=40)
         Entry(self.app,textvariable=current_dir,width=172).place(x=0,y=0)
         self.url_visor=Entry(self.app,textvariable=self.url,width=37,font='Arial, 33')
@@ -26,18 +27,23 @@ class shortener:
         self.app.mainloop()
 
     def shorten_URL(self):
-        if self.url_visor.get()!="":
+        if self.is_url(self.url_visor.get())==True:
             self.ShrtStatus.configure(text="Shorting your URL...")
             url = self.url_visor.get()
             self.url.set(ps.Shortener().tinyurl.short(url))
             self.ShrtStatus.configure(text="Task completed :)")
 
+    def is_url(self,url):
+        try:
+            result = urlparse(url)
+            return all([result.scheme, result.netloc])
+        except ValueError:
+            return False
+            
     def init_task(self):
         t = threading.Thread(target=self.shorten_URL)
         t.start()
             
-        
-
 if __name__=="__main__":
     shortener()
         
