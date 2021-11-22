@@ -12,6 +12,7 @@ class shortener:
         current_dir = StringVar()
         current_dir.set(os.getcwd())
 
+        Label(self.app,text="URL Shortener...",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=40)
         Entry(self.app,textvariable=current_dir,width=172).place(x=0,y=0)
         url_visor=Entry(self.app,width=37,font='Arial, 33')
         url_visor.place(x=20,y=150)
