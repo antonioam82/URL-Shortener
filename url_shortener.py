@@ -14,7 +14,9 @@ class shortener:
         current_dir.set(os.getcwd())
         self.url = StringVar()
 
-        Label(self.app,text="URL Shortener...",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=40)
+        Label(self.app,text="URL Shortener:",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=40)
+        self.ShrtStatus = Label(self.app,text="",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold'))
+        self.ShrtStatus.place(x=440,y=40)
         Entry(self.app,textvariable=current_dir,width=172).place(x=0,y=0)
         self.url_visor=Entry(self.app,textvariable=self.url,width=37,font='Arial, 33')
         self.url_visor.place(x=20,y=150)
@@ -25,8 +27,10 @@ class shortener:
 
     def shorten_URL(self):
         if self.url_visor.get()!="":
+            self.ShrtStatus.configure(text="Shorting your URL...")
             url = self.url_visor.get()
             self.url.set(ps.Shortener().tinyurl.short(url))
+            self.ShrtStatus.configure(text="Task completed :)")
 
     def init_task(self):
         t = threading.Thread(target=self.shorten_URL)
