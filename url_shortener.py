@@ -37,7 +37,7 @@ class shortener:
             self.url.set(ps.Shortener().tinyurl.short(url))
             self.ShrtStatus.configure(text="Task completed :)")
         else:
-            messagebox.showwarning("INVALID URL","Enter a valid URL.")
+            messagebox.showwarning("EMPTY OR INVALID URL","Enter a valid URL.")
 
     def clear(self):
         self.url.set("")
