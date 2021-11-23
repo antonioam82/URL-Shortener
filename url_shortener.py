@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from tkinter import *
 from tkinter import messagebox
 import pyshorteners as ps
@@ -16,9 +18,9 @@ class shortener:
         current_dir.set(os.getcwd())
         self.url = StringVar()
 
-        Label(self.app,text="URL Shortener:",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=40)
+        Label(self.app,text="URL Shortener:",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=50)
         self.ShrtStatus = Label(self.app,bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold'))
-        self.ShrtStatus.place(x=440,y=40)
+        self.ShrtStatus.place(x=440,y=50)
         Entry(self.app,textvariable=current_dir,width=172).place(x=0,y=0)
         self.url_visor=Entry(self.app,textvariable=self.url,width=37,font='Arial, 33')
         self.url_visor.place(x=20,y=150)
@@ -32,10 +34,10 @@ class shortener:
 
     def shorten_URL(self):
         if self.is_url(self.url_visor.get())==True:
-            self.ShrtStatus.configure(text="Shorting your URL...")
+            self.ShrtStatus.configure(text="shorting your URL...")
             url = self.url_visor.get()
             self.url.set(ps.Shortener().tinyurl.short(url))
-            self.ShrtStatus.configure(text="Task completed :)")
+            self.ShrtStatus.configure(text="task completed :)")
         else:
             messagebox.showwarning("EMPTY/INVALID URL","Enter a valid URL.")
 
