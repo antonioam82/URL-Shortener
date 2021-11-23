@@ -34,10 +34,14 @@ class shortener:
 
     def shorten_URL(self):
         if self.is_url(self.url_visor.get())==True:
-            self.ShrtStatus.configure(text="shorting your URL...")
-            url = self.url_visor.get()
-            self.url.set(ps.Shortener().tinyurl.short(url))
-            self.ShrtStatus.configure(text="task completed :)")
+            try:
+                self.ShrtStatus.configure(text="shorting your URL...")
+                url = self.url_visor.get()
+                self.url.set(ps.Shortener().tinyurl.short(url))
+                self.ShrtStatus.configure(text="task completed :)")
+            except Exception as e:
+                messagebox.showwarning("UNEXPECTED ERROR",str(e))
+                self.clear()
         else:
             messagebox.showwarning("EMPTY/INVALID URL","Enter a valid URL.")
 
