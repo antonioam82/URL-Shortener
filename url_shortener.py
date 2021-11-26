@@ -27,9 +27,10 @@ class shortener:
         self.url_visor=Entry(self.app,textvariable=self.url,width=37,font='Arial, 33')
         self.url_visor.place(x=20,y=150)
         Button(self.app,text="SHORTEN",height=3,width=12,command=self.init_task).place(x=925,y=150)
-        Button(self.app,text="COPY",height=1,width=12,command=self.copy).place(x=925,y=235)
-        Button(self.app,text="CLEAR",height=1,width=12,command=self.clear).place(x=819,y=235)
-        Button(self.app,text="IMPORT",height=1,width=12,command=self.init_task2).place(x=713,y=235)
+        Button(self.app,text="COPY",width=12,command=self.copy).place(x=925,y=235)
+        Button(self.app,text="CLEAR",width=12,command=self.clear).place(x=819,y=235)
+        Button(self.app,text="IMPORT",width=12,command=self.init_task2).place(x=713,y=235)
+        Button(self.app,text="CREATE QR",width=20).place(x=20,y=235)
 
         self.app.mainloop()
 
@@ -45,6 +46,7 @@ class shortener:
                 self.clear()
         else:
             messagebox.showwarning("EMPTY/INVALID URL","Enter a valid URL.")
+            self.clear()
 
     def import_url(self):
         self.clear()
