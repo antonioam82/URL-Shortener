@@ -67,7 +67,8 @@ class shortener:
 
     def save_qr(self):
         if self.is_url(self.url_visor.get())==True:
-            new_file = filedialog.asksaveasfilename(initialdir="/",title="SAVE AS",defaultextension=".png",)
+            new_file = filedialog.asksaveasfilename(initialdir="/",initialfile="urlQR",
+                                                    title="SAVE AS",defaultextension=".png",)
             if new_file != "":
                 qr = qrcode.make(self.url_visor.get())
                 qr.save(new_file)
