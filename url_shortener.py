@@ -21,9 +21,9 @@ class shortener:
         current_dir.set(os.getcwd())
         self.url = StringVar()
 
-        Label(self.app,text="URL Shortener:",bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold')).place(x=20,y=50)
-        self.ShrtStatus = Label(self.app,bg="PaleGreen2",fg="white",font=('Arial', 40, 'bold'))
-        self.ShrtStatus.place(x=440,y=50)
+        Label(self.app,text="URL Shortener",bg="PaleGreen2",width=32,fg="white",font=('Arial', 40, 'bold')).place(x=4,y=50)
+        self.ShrtStatus = Label(self.app,bg="PaleGreen2",fg="white",width=103,font=('Arial', 13, 'bold'))
+        self.ShrtStatus.place(x=1,y=113)
         Entry(self.app,textvariable=current_dir,width=172).place(x=0,y=0)
         self.url_visor=Entry(self.app,textvariable=self.url,width=37,font='Arial, 33')
         self.url_visor.place(x=20,y=150)
