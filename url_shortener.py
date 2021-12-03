@@ -30,7 +30,7 @@ class shortener:
         Button(self.app,text="SHORTEN",height=3,width=12,command=self.init_task).place(x=925,y=150)
         Button(self.app,text="COPY",width=12,command=self.copy).place(x=925,y=235)
         Button(self.app,text="CLEAR",width=12,command=self.clear).place(x=819,y=235)
-        Button(self.app,text="IMPORT",width=12,command=self.init_task2).place(x=713,y=235)
+        Button(self.app,text="IMPORT URL",width=12,command=self.init_task2).place(x=713,y=235)
         Button(self.app,text="CREATE QR",width=20,command=self.save_qr).place(x=20,y=235)
 
         self.app.mainloop()
@@ -51,6 +51,7 @@ class shortener:
 
     def import_url(self):
         self.clear()
+        messagebox.showinfo("copy and paste","Copy and paste your URL")
         ultcop = pyperclip.paste().strip()
         while True:
             time.sleep(0.1)
